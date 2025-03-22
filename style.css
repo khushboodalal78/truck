@@ -208,11 +208,7 @@ nav {
   .nav-toggle {
     display: none;
   }
-  .c-name{
-    width: auto;
-    font-family: Athelas;
-    font-size: 1.75rem;
-  }
+  
   .links {
     height: auto;
     display: flex;
@@ -237,11 +233,7 @@ nav {
     color: var(--clr-primary-7);
   }
 }
-@media screen and (max-width: 800px){
-  .c-name{
-    display: none;
-  }
-}
+
 .service-sec{
   width: 100vw;
   height: auto;
@@ -261,7 +253,7 @@ nav {
   border-radius: 10px;
 }
 .artilce-img{
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-size: cover;
   object-fit: cover;
@@ -455,4 +447,54 @@ main {
   font-size: 30px;
   transition: .5s;
 }
+
+.card-container{
+  transform: translate(-50%, -50%);
+  height: auto;
+  width: 400px;
+  text-align: center;
+  border-radius: 5px;
+}
+.card-face{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 5px;
+  backface-visibility: hidden;
+  box-shadow: 0 2px 3px rgba(0,0,0,.2);
+  transition: transform .4s linear;
+}
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.card-container::after, .card-container::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(from var(--angle), rgb(252, 11, 11), rgb(250, 168, 14), rgb(216, 29, 169), rgb(10, 158, 10), rgb(240, 240, 40), rgb(30, 30, 238));
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 3px;
+  border-radius: 10px;
+  animation: 3s spin linear infinite;
+}
+.card-container::before{
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+@keyframes spin{
+  from{
+      --angle: 0deg;
+  }
+  to{
+      --angle: 360deg;
+  }
+}
+
 
